@@ -3,7 +3,7 @@ Proyecto de Programación de Videojuegos del Grupo 213027_13
 
 
 
-![Foto](Andres/ARG.jpg)
+![Foto de Andrés](Andres/ARG.jpeg)
 Nombre: Andres Rocha Galeano
 Rol: productor de audio, Desarrollo de Software e Innovación Tecnológica
 Ubicación: Chía 
