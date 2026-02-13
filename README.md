@@ -19,3 +19,10 @@ en los que participo.
 - **Rol en la industria**: Marketing, Creacion de Contenido
 - **Ubicacion**: Bogota, Colombia
 - **Perfil breve**: Actualmente soy editor de video, en una de las universidades virtuales más grandes del mundo, consiguiente soy estudiante de Ingieneria Multimedia. Me gusta la creacion de contenido, los videojuegos, las peliculas, la fotografia, y el gym.
+
+## Nicolas Montaño Ortigoza
+
+Soy Nicolas Montaño
+Aun no tengo un rol en la industria sin embargo mi objetivo es enfocarme en toda la parte audiovisual
+Vivo en la ciudad de Bogotá
+Soy productor multimedia aunque actualmente trabajo en el campo del marketing y publicidad como trafficker en la implementación de campañas, mi objetivo es y se mantiene en adentrarme en el mundo de lo audiovisual poder vivir detrás de un lente y seguir evolucionando conforme a los retos que presenta este mundo
