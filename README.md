@@ -21,6 +21,7 @@ en los que participo.
 - **Perfil breve**: Actualmente soy editor de video, en una de las universidades virtuales más grandes del mundo, consiguiente soy estudiante de Ingieneria Multimedia. Me gusta la creacion de contenido, los videojuegos, las peliculas, la fotografia, y el gym.
 
 ## Nicolas Montaño Ortigoza
+![Foto Personal](Nicolas/Avatar.jpg) 
 
 Soy Nicolas Montaño
 Aun no tengo un rol en la industria sin embargo mi objetivo es enfocarme en toda la parte audiovisual
