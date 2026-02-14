@@ -31,7 +31,7 @@ Vivo en la ciudad de Bogotá
 ![Foto Personal](Angie/Angie.png)
 
 - **Rol**: Animadora de videojuegos
--**Ubicación**: Colombia
--**Perfil**: Estudiante de Ingeniería Multimedia interesada en la animación digital y la creación de movimientos para personajes y escenarios dentro de videojuegos.
+- **Ubicación**: Colombia
+- **Perfil**: Estudiante de Ingeniería Multimedia interesada en la animación digital y la creación de movimientos para personajes y escenarios dentro de videojuegos.
 Me enfoco en aportar dinamismo, expresividad y realismo a las experiencias interactivas mediante animaciones 2D y 3D.Carpeta personal de Angie
 Soy productor multimedia aunque actualmente trabajo en el campo del marketing y publicidad como trafficker en la implementación de campañas, mi objetivo es y se mantiene en adentrarme en el mundo de lo audiovisual poder vivir detrás de un lente y seguir evolucionando conforme a los retos que presenta este mundo
