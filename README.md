@@ -35,3 +35,18 @@ Soy productor multimedia aunque actualmente trabajo en el campo del marketing y 
 - **Ubicación**: Bogota, Colombia
 - **Perfil**: Estudiante de Ingeniería Multimedia interesada en la animación digital y la creación de movimientos para personajes y escenarios dentro de videojuegos.
 Me enfoco en aportar dinamismo, expresividad y realismo a las experiencias interactivas mediante animaciones 2D y 3D.
+
+# Luis Torres
+
+![Foto personal](./luis/foto.jpeg)
+
+## Rol en la industria
+Diseñador de videojuegos / Game Designer
+
+## Ubicación
+Bogotá - Colombia
+
+## Perfil
+Soy diseñador y desarrollador en formación con interés en narrativa interactiva, diseño emocional y construcción de mundos. 
+Me apasiona crear experiencias inmersivas que conecten con el jugador a nivel psicológico y simbólico. 
+Actualmente trabajo en proyectos enfocados en mecánicas narrativas y estética artística inspirada en animación tradicional.
