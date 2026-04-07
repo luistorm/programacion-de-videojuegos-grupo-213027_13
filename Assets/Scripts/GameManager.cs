@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentState == GameState.Playing)
         {
+            Debug.Log(Mathf.Ceil(timer));
             timer -= Time.deltaTime;
 
             if (timer <= 0)

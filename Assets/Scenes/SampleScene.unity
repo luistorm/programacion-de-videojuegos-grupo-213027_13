@@ -167,6 +167,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &311798084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dde2505d184324148bb42b3c1f8a5773, type: 3}
+  m_PrefabInstance: {fileID: 867286622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &311798086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311798084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464c5a8be9d46486c8bde31a50be2a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLever
+  moveAmount: 2
+  speed: 10
 --- !u!1 &330184374
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.014539327, y: -0.70694476, z: 0.008843648, w: 0.707064}
-  m_LocalPosition: {x: 219.9, y: 49.5, z: -108.8}
+  m_LocalPosition: {x: 203.7, y: 48.9, z: -95.9}
   m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -753,7 +772,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5237ed91744cc4136890d80d88b28d12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1609624779}
   m_SourcePrefab: {fileID: 100100000, guid: 5237ed91744cc4136890d80d88b28d12, type: 3}
 --- !u!1 &832575517
 GameObject:
@@ -875,7 +897,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dde2505d184324148bb42b3c1f8a5773, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 311798086}
   m_SourcePrefab: {fileID: 100100000, guid: dde2505d184324148bb42b3c1f8a5773, type: 3}
 --- !u!1001 &1020669107
 PrefabInstance:
@@ -948,8 +973,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 695ae700ada464a009a1440068e9c05e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158740337}
   m_SourcePrefab: {fileID: 100100000, guid: 695ae700ada464a009a1440068e9c05e, type: 3}
+--- !u!1 &1158740335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 695ae700ada464a009a1440068e9c05e, type: 3}
+  m_PrefabInstance: {fileID: 1020669107}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1158740337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158740335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56ca8e110c2749c098ec3ca69618c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCLever
+  interval: 1
+  moveAmount: 1
+  speed: 5
 --- !u!1001 &1483009031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1021,8 +1069,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bbccb7991123c4805b4f6255946b2e4c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1791162400}
   m_SourcePrefab: {fileID: 100100000, guid: bbccb7991123c4805b4f6255946b2e4c, type: 3}
+--- !u!1 &1609624777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5237ed91744cc4136890d80d88b28d12, type: 3}
+  m_PrefabInstance: {fileID: 760425996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1609624779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609624777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56ca8e110c2749c098ec3ca69618c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCLever
+  interval: 0.5
+  moveAmount: 2
+  speed: 15
+--- !u!1 &1791162398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bbccb7991123c4805b4f6255946b2e4c, type: 3}
+  m_PrefabInstance: {fileID: 1483009031}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1791162400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791162398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56ca8e110c2749c098ec3ca69618c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCLever
+  interval: 1
+  moveAmount: 2
+  speed: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
