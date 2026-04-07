@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public int scoreTeamA = 0;
     public int scoreTeamB = 0;
+    public TextMeshProUGUI timerText;
 
     public enum GameState
     {
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
     {
         if (currentState == GameState.Playing)
         {
+            Debug.Log(Mathf.Ceil(timer));
+            timerText.text = $"Tiempo: {Mathf.Max(0, Mathf.Ceil(timer))} segundos"; 
             timer -= Time.deltaTime;
 
             if (timer <= 0)
@@ -47,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     void StartLaunch()
     {
+        timerText.text = "¡Tiempo!"; 
         currentState = GameState.Launching;
         Debug.Log("Despegue!");
     }
