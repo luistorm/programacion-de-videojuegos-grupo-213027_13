@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public int scoreTeamA = 0;
     public int scoreTeamB = 0;
     public TextMeshProUGUI timerText;
+    public int rocketsFinished = 0;
+    public Transform rocketCenter;
 
     public enum GameState
     {
@@ -38,7 +40,6 @@ public class GameManager : MonoBehaviour
     {
         if (currentState == GameState.Playing)
         {
-            Debug.Log(Mathf.Ceil(timer));
             timerText.text = $"Tiempo: {Mathf.Max(0, Mathf.Ceil(timer))} segundos"; 
             timer -= Time.deltaTime;
 
@@ -47,6 +48,37 @@ public class GameManager : MonoBehaviour
                 StartLaunch();
             }
         }
+        if (currentState == GameState.Launching)
+        {
+            timerText.text = "Altura: " + Mathf.Ceil(rocketCenter.position.y).ToString();
+            if (rocketsFinished >= 2)
+            {
+                StartFalling();
+            }
+        }
+        if (currentState == GameState.Falling)
+        {
+            if (rocketsFinished >= 2)
+            {
+                EndGame();
+            }
+        }
+    }
+
+    void EndGame()
+    {
+        currentState = GameState.End;
+        if (scoreTeamA > scoreTeamB)
+            Debug.Log("Gana equipo A");
+        else
+            Debug.Log("Gana equipo B");
+    }
+
+    void StartFalling()
+    {
+        currentState = GameState.Falling;
+        Debug.Log("Falling!");
+        rocketsFinished = 0;
     }
 
     void StartLaunch()
@@ -54,5 +86,6 @@ public class GameManager : MonoBehaviour
         timerText.text = "¡Tiempo!"; 
         currentState = GameState.Launching;
         Debug.Log("Despegue!");
+        rocketsFinished = 0;
     }
 }
