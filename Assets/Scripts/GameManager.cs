@@ -1,0 +1,58 @@
+using UnityEngine;
+using TMPro;
+
+public class GameManager : MonoBehaviour
+{
+    public static GameManager Instance;
+
+    public float gameDuration = 10f;
+    private float timer;
+
+    public int scoreTeamA = 0;
+    public int scoreTeamB = 0;
+    public TextMeshProUGUI timerText;
+
+    public enum GameState
+    {
+        Playing,
+        Launching,
+        Falling,
+        End
+    }
+
+    public GameState currentState;
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    void Start()
+    {
+        timer = gameDuration;
+        currentState = GameState.Playing;
+        Debug.Log("Inicia el tiempo");
+    }
+
+    void Update()
+    {
+        if (currentState == GameState.Playing)
+        {
+            Debug.Log(Mathf.Ceil(timer));
+            timerText.text = $"Tiempo: {Mathf.Max(0, Mathf.Ceil(timer))} segundos"; 
+            timer -= Time.deltaTime;
+
+            if (timer <= 0)
+            {
+                StartLaunch();
+            }
+        }
+    }
+
+    void StartLaunch()
+    {
+        timerText.text = "¡Tiempo!"; 
+        currentState = GameState.Launching;
+        Debug.Log("Despegue!");
+    }
+}
