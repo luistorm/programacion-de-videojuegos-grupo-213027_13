@@ -1,47 +1,76 @@
-
 using UnityEngine;
 
 public class LogicaVueloCohete : MonoBehaviour
 {
-    [Header("Configuración de Vuelo")]
-    public float velocidadCaida = 1.5f;
-    public float limiteAltitud = 400.0f; 
-    public float fuerzaImpulso = 2.0f;
-    public float alturaSuelo = 0.6f;    
+    [Header("Mecánica 2.3 - Velocidad, peso Cohetes y caida")]
+    public float alturaSuelo = 30.5f;
+    public float limiteAltitud = 400.0f; // limite prueba
+    public float gravedad = 15.0f;
+    public float velocidadCaidaNormal = 15.0f;
 
-    [Header("Referencia al Personaje")]
-    public Animator animadorPersonaje; 
+    [Header("Ajustes de Ganador (Paracaídas)")]
+    public bool soyGanador = false; 
+    public float velocidadConParacaidas = 5.0f;
+    public float amplitudBalanceo = 0.8f; 
+    public float frecuenciaBalanceo = 2.5f;
+
+    private float velocidadActual = 0f;
+    private bool paracaidasAbierto = false;
 
     void Update()
     {
-       
+        // 1. CAIDA 
         if (transform.position.y > alturaSuelo)
         {
-            transform.Translate(Vector3.down * velocidadCaida * Time.deltaTime);
-        }
+            float descenso;
 
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+            // Lógica de paracaídas para el ganador
+            if (soyGanador && paracaidasAbierto)
+            {
+                descenso = velocidadConParacaidas;
+            }
+            else
+            {
+                // gravedad
+                velocidadActual += gravedad * Time.deltaTime;
+                descenso = velocidadActual;
+            }
+
+            Vector3 movimiento = Vector3.down * descenso * Time.deltaTime;
+
+            // Efecto paracaídas
+            if (soyGanador && paracaidasAbierto)
+            {
+                float balanceo = Mathf.Sin(Time.time * frecuenciaBalanceo) * amplitudBalanceo;
+                movimiento += Vector3.right * balanceo * Time.deltaTime;
+            }
+
+            transform.Translate(movimiento);
+        }
+        else
         {
-            SubirYAnimar();
+            // Suelo
+            velocidadActual = 0f;
+            paracaidasAbierto = false;
+            transform.position = new Vector3(transform.position.x, alturaSuelo, transform.position.z);
         }
 
-        
+        // 2. LIMITE
         if (transform.position.y > limiteAltitud)
         {
             transform.position = new Vector3(transform.position.x, limiteAltitud, transform.position.z);
+            velocidadActual = 0f; // Freno
+            paracaidasAbierto = true; // Activa el comportamiento de descenso lento
+            Debug.Log(gameObject.name + " LLEGÓ A LA META");
         }
-    }
 
-    void SubirYAnimar()
-    {
-        
-        transform.Translate(Vector3.up * fuerzaImpulso);
-
-        
-        if (animadorPersonaje != null)
+        // PRUEBA
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            animadorPersonaje.SetTrigger("Pump");
+            transform.position += Vector3.up * 50f;
+            velocidadActual = 0f; // Reiniciar velocidad 
+            paracaidasAbierto = false;
+            Debug.Log("Impulso de prueba: " + transform.position.y + " yardas");
         }
     }
 }

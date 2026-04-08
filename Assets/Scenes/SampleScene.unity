@@ -143,7 +143,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30657301}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a615ccd23d15e477189ec92eb14a93e0, type: 3}
   m_Name: 
@@ -151,6 +151,7 @@ MonoBehaviour:
   gameDuration: 10
   scoreTeamA: 0
   scoreTeamB: 0
+  timerText: {fileID: 0}
   currentState: 0
 --- !u!4 &30657303
 Transform:
@@ -311,6 +312,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -385,13 +387,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.014539327, y: -0.70694476, z: 0.008843648, w: 0.707064}
-  m_LocalPosition: {x: 203.7, y: 48.9, z: -95.9}
+  m_LocalRotation: {x: 0.067467354, y: -0.7038687, z: 0.07421848, w: 0.70321304}
+  m_LocalPosition: {x: 226.7, y: 69.42, z: -104.9}
   m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 1.895, y: -89.998, z: -0.462}
+  m_LocalEulerAnglesHint: {x: 11.5, y: -89.998, z: 0.55}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +438,52 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc8f54396ea4244c1a92f766b8821b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeguimientoCamara
+  coheteEquipoA: {fileID: 1624527658}
+  coheteEquipoB: {fileID: 404022352}
+  suavizado: 5
+  offsetAltura: 35
+--- !u!1 &404022351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
+  m_PrefabInstance: {fileID: 463464767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &404022352 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
+  m_PrefabInstance: {fileID: 463464767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &404022353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404022351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e69e17992f24a62b7a0a7cea60394d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LogicaVueloCohete
+  alturaSuelo: 30.5
+  limiteAltitud: 400
+  gravedad: 15
+  velocidadCaidaNormal: 15
+  soyGanador: 0
+  velocidadConParacaidas: 5
+  amplitudBalanceo: 0.8
+  frecuenciaBalanceo: 2.5
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +686,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 404022353}
   m_SourcePrefab: {fileID: 100100000, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
 --- !u!1001 &647654156
 PrefabInstance:
@@ -715,7 +766,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1624527659}
   m_SourcePrefab: {fileID: 100100000, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
 --- !u!1001 &760425996
 PrefabInstance:
@@ -1094,6 +1148,36 @@ MonoBehaviour:
   interval: 0.5
   moveAmount: 2
   speed: 15
+--- !u!1 &1624527657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
+  m_PrefabInstance: {fileID: 647654156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1624527658 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
+  m_PrefabInstance: {fileID: 647654156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1624527659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624527657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e69e17992f24a62b7a0a7cea60394d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LogicaVueloCohete
+  alturaSuelo: 30.5
+  limiteAltitud: 400
+  gravedad: 15
+  velocidadCaidaNormal: 15
+  soyGanador: 1
+  velocidadConParacaidas: 8
+  amplitudBalanceo: 4
+  frecuenciaBalanceo: 2
 --- !u!1 &1791162398 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bbccb7991123c4805b4f6255946b2e4c, type: 3}
