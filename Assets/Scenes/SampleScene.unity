@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -454,6 +455,22 @@ MonoBehaviour:
   coheteEquipoB: {fileID: 404022352}
   suavizado: 5
   offsetAltura: 35
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6cffdfb7d8b45609ad71c93a89e6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  rocketA: {fileID: 1624527658}
+  rocketB: {fileID: 404022352}
+  smoothSpeed: 5
+  heightOffset: 15
 --- !u!1 &404022351 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
@@ -484,6 +501,26 @@ MonoBehaviour:
   velocidadConParacaidas: 5
   amplitudBalanceo: 0.8
   frecuenciaBalanceo: 2.5
+  velocidadActual: 0
+  paracaidasAbierto: 0
+--- !u!114 &404022354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404022351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc714a7e0003043fba38e68ce7647aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RocketBehavior
+  isTeamA: 0
+  gravity: 15
+  groundHeight: 30.5
+  parachuteSpeed: 5
+  swayAmplitude: 0.8
+  swayFrequency: 2.5
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +727,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 404022353}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 404022354}
   m_SourcePrefab: {fileID: 100100000, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
 --- !u!1001 &647654156
 PrefabInstance:
@@ -770,6 +810,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1624527659}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1624527660}
   m_SourcePrefab: {fileID: 100100000, guid: f45b22746ac1647caaaf428bb0a1cf4d, type: 3}
 --- !u!1001 &760425996
 PrefabInstance:
@@ -1178,6 +1221,26 @@ MonoBehaviour:
   velocidadConParacaidas: 8
   amplitudBalanceo: 4
   frecuenciaBalanceo: 2
+  velocidadActual: 0
+  paracaidasAbierto: 0
+--- !u!114 &1624527660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624527657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc714a7e0003043fba38e68ce7647aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RocketBehavior
+  isTeamA: 1
+  gravity: 15
+  groundHeight: 30.5
+  parachuteSpeed: 5
+  swayAmplitude: 0.8
+  swayFrequency: 2.5
 --- !u!1 &1791162398 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bbccb7991123c4805b4f6255946b2e4c, type: 3}
