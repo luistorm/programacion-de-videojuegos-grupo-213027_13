@@ -24,7 +24,6 @@ public class RocketCenter : MonoBehaviour
         }
         else if (GameManager.Instance.currentState == GameManager.GameState.Falling)
         {
-            // 🔥 IMPORTANTE: ahora sí puede bajar
             maxY = highestY;
         }
 
