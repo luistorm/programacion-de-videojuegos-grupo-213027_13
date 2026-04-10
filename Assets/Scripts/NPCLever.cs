@@ -3,6 +3,7 @@ using UnityEngine;
 public class NPCLever : MonoBehaviour
 {
     public float interval = 2f;
+    public int team; // 0 = A, 1 = B
     private float timer;
 
     private Vector3 initialPosition;
@@ -27,8 +28,10 @@ public class NPCLever : MonoBehaviour
         {
             timer = 0;
             isMoving = true;
-
-            GameManager.Instance.scoreTeamB++;
+            if (team == 0)
+                GameManager.Instance.scoreTeamA++;
+            else 
+                GameManager.Instance.scoreTeamB++;
         }
 
         Animate();
