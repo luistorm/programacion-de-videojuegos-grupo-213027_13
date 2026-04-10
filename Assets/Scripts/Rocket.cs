@@ -72,8 +72,6 @@ public class Rocket : MonoBehaviour
         float height = score * heightMultiplier;
 
         targetPosition = initialPosition + Vector3.up * height;
-        Debug.Log(
-            $"Target del cohete {team}: {targetPosition}");
     }
 
     void MoveUp()
