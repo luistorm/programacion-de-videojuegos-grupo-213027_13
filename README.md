@@ -6,7 +6,7 @@ El juego consiste en una competencia de carga de cohetes donde dos equipos
 luchan por alcanzar la máxima altura posible.
 
 ## Mecánicas Principales
-* **Fase de Carga:** El jugador debe presionar la barra espaciadora repetidamente para sumar puntos.
+* **Fase de Carga:** El jugador debe presionar la barra espaciadora repetidamente para sumar puntos antes de que el temporizador termine en 0.
 * **Fase de Lanzamiento:** Los cohetes despegan dinámicamente según el puntaje obtenido.
 * **Fase de Descenso:** Los cohetes regresan al suelo con físicas de rotación.
 
@@ -15,8 +15,8 @@ luchan por alcanzar la máxima altura posible.
 * **Esc:** Salir del juego (opcional).
 
 ## Tecnologías Utilizadas
-* **Unity:** 2022.x / 2023.x
-* **Lenguaje:** C#
+* **Unity:** 
+* **Lenguaje de programación en Scripts:** C#
 * **Control de versiones:** Git / GitHub
 
 ## Integrantes del Equipo
