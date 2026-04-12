@@ -1,4 +1,4 @@
-# Rocket Race - Minijuego estilo Mario Party
+#  Pump, pump and away - Minijuego estilo Mario Party
 
 ## Descripción
 Este es un proyecto desarrollado para el curso de Programación para Videojuegos de la UNAD. 
