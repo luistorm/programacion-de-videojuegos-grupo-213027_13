@@ -4,8 +4,8 @@ public class Rocket : MonoBehaviour
 {
     public int team; // 0 = A, 1 = B
 
-    public float heightMultiplier = 0.5f;
-    public float speed = 5f;
+    public float heightMultiplier = 0.5f; //ajustes de vuelo
+    public float speed = 5f; // ajustes de vuelo 
 
     private Vector3 initialPosition;
     private Vector3 targetPosition;
@@ -21,7 +21,7 @@ public class Rocket : MonoBehaviour
 
     void Start()
     {
-        initialPosition = transform.position;
+        initialPosition = transform.position; //M posición 
     }
 
     void Update()
@@ -48,7 +48,7 @@ public class Rocket : MonoBehaviour
         transform.position += Vector3.down * fallSpeed * Time.deltaTime;
         transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
 
-        if (transform.position.y <= initialPosition.y)
+        if (transform.position.y <= initialPosition.y) // detectar suelo 
         {
             transform.position = initialPosition;
             hasLanded = true;
