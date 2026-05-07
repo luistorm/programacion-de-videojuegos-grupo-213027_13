@@ -515,9 +515,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioObserver
   musicSource: {fileID: 356751816}
   sfxSource: {fileID: 356751815}
-  musicVolume: 0.263
-  sfxVolume: 0.594
-  introMusic: {fileID: 8300000, guid: 2a97e45dbf251453cbaa1953c068088c, type: 3}
+  musicVolume: 0.193
+  sfxVolume: 0.424
+  introMusic: {fileID: 8300000, guid: 7f67cbfd45da844e1b8f66d3be27d268, type: 3}
+  engineLoop: {fileID: 8300000, guid: 2a97e45dbf251453cbaa1953c068088c, type: 3}
   countdownBeep: {fileID: 8300000, guid: b482f67ad505a4705903f3d1d645dd29, type: 3}
   launchSound: {fileID: 8300000, guid: 0ecb94edb22fd4e159395428117f1ed1, type: 3}
   timerText: {fileID: 608779840}
