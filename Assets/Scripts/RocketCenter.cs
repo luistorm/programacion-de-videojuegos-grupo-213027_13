@@ -6,9 +6,12 @@ public class RocketCenter : MonoBehaviour
     public Transform rocketB;
 
     private float maxY;
+    private GameManager.GameState lastState;
 
     void Update()
     {
+        var currentState = GameManager.Instance.currentState;
+
         float centerX = (rocketA.position.x + rocketB.position.x) / 2f;
         float centerZ = (rocketA.position.z + rocketB.position.z) / 2f;
 
@@ -17,16 +20,26 @@ public class RocketCenter : MonoBehaviour
             rocketB.position.y
         );
 
-        if (GameManager.Instance.currentState == GameManager.GameState.Launching)
+        if (currentState != lastState)
+        {
+            if (currentState == GameManager.GameState.Falling)
+            {
+                maxY = highestY;
+            }
+        }
+
+        if (currentState == GameManager.GameState.Launching)
         {
             if (highestY > maxY)
                 maxY = highestY;
         }
-        else if (GameManager.Instance.currentState == GameManager.GameState.Falling)
+        else if (currentState == GameManager.GameState.Falling)
         {
             maxY = highestY;
         }
 
         transform.position = new Vector3(centerX, maxY, centerZ);
+
+        lastState = currentState;
     }
 }
