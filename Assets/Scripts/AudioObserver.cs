@@ -2,7 +2,8 @@ using UnityEngine;
 using TMPro;
 
 /// <summary>
-/// Monitors UI changes and game states to trigger audio events with volume control.
+/// Monitors game states and UI to trigger background music, 
+/// countdown ticks, and engine loops during launch.
 /// </summary>
 public class AudioObserver : MonoBehaviour
 {
@@ -11,13 +12,12 @@ public class AudioObserver : MonoBehaviour
     public AudioSource sfxSource;   
 
     [Header("Volume Settings")]
-    [Range(0f, 1f)] 
-    public float musicVolume = 0.2f; // Set to 20% by default for background music
-    [Range(0f, 1f)] 
-    public float sfxVolume = 1.0f;   // SFX remains at full volume for impact
+    [Range(0f, 1f)] public float musicVolume = 0.2f;
+    [Range(0f, 1f)] public float sfxVolume = 1.0f;
 
-    [Header("Music Clips")]
+    [Header("Music & Loops")]
     public AudioClip introMusic;    
+    public AudioClip engineLoop;    // New clip for the continuous engine sound
 
     [Header("SFX Clips")]
     public AudioClip countdownBeep; 
@@ -31,7 +31,6 @@ public class AudioObserver : MonoBehaviour
 
     void Start()
     {
-        // Apply initial volumes to the sources
         if (musicSource != null) musicSource.volume = musicVolume;
         if (sfxSource != null) sfxSource.volume = sfxVolume;
 
@@ -40,7 +39,7 @@ public class AudioObserver : MonoBehaviour
             lastState = GameManager.Instance.currentState;
             if (lastState == GameManager.GameState.Playing)
             {
-                PlayMusic(introMusic, true);
+                PlayLoopingAudio(introMusic);
             }
         }
 
@@ -74,12 +73,23 @@ public class AudioObserver : MonoBehaviour
         switch (newState)
         {
             case GameManager.GameState.Playing:
-                PlayMusic(introMusic, true);
+                PlayLoopingAudio(introMusic);
                 break;
 
             case GameManager.GameState.Launching:
+                // 1. Stop intro music
                 if (musicSource.isPlaying) musicSource.Stop();
-                sfxSource.PlayOneShot(launchSound, sfxVolume);
+                
+                // 2. Play the ignition one-shot (explosion/start)
+                if (launchSound != null) sfxSource.PlayOneShot(launchSound, sfxVolume);
+                
+                // 3. Start the continuous engine loop
+                PlayLoopingAudio(engineLoop);
+                break;
+
+            case GameManager.GameState.Falling:
+                // Stop the engine loop when rockets start falling
+                if (musicSource.isPlaying) musicSource.Stop();
                 break;
 
             case GameManager.GameState.End:
@@ -92,18 +102,17 @@ public class AudioObserver : MonoBehaviour
     {
         if (countdownBeep != null && sfxSource != null)
         {
-            // PlayOneShot uses the second parameter as a volume scale
             sfxSource.PlayOneShot(countdownBeep, sfxVolume);
         }
     }
 
-    private void PlayMusic(AudioClip clip, bool loop)
+    private void PlayLoopingAudio(AudioClip clip)
     {
         if (clip == null || musicSource == null) return;
         
         musicSource.clip = clip;
-        musicSource.loop = loop;
-        musicSource.volume = musicVolume; // Force the volume to the specified value
+        musicSource.loop = true;
+        musicSource.volume = musicVolume;
         musicSource.Play();
     }
 }
