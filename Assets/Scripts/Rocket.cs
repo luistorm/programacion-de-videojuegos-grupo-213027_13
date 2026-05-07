@@ -4,8 +4,8 @@ public class Rocket : MonoBehaviour
 {
     public int team; // 0 = A, 1 = B
 
-    public float heightMultiplier = 0.5f; //ajustes de vuelo
-    public float speed = 5f; // ajustes de vuelo 
+    public float heightMultiplier = 0.5f; 
+    public float speed = 5f; 
 
     private Vector3 initialPosition;
     private Vector3 targetPosition;

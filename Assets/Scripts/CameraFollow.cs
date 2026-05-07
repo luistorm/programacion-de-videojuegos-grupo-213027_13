@@ -8,7 +8,10 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        if (GameManager.Instance.currentState != GameManager.GameState.Launching)
+        var state = GameManager.Instance.currentState;
+
+        if (state != GameManager.GameState.Launching &&
+            state != GameManager.GameState.Falling)
             return;
 
         if (target == null)
