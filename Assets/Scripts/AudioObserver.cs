@@ -3,7 +3,7 @@ using TMPro;
 
 /// <summary>
 /// Monitors game states and UI to trigger background music, 
-/// countdown ticks, and engine loops during launch.
+/// countdown ticks, launch loops, and final game-over sounds.
 /// </summary>
 public class AudioObserver : MonoBehaviour
 {
@@ -17,11 +17,14 @@ public class AudioObserver : MonoBehaviour
 
     [Header("Music & Loops")]
     public AudioClip introMusic;    
-    public AudioClip engineLoop;    // New clip for the continuous engine sound
+    public AudioClip engineLoop;    
 
     [Header("SFX Clips")]
     public AudioClip countdownBeep; 
     public AudioClip launchSound;   
+    public AudioClip victorySound;  // New clip for Team A Victory
+    public AudioClip defeatSound;   // New clip for Team A Defeat
+    public AudioClip tieSound;      // New clip for a Tie Match
 
     [Header("UI References")]
     public TextMeshProUGUI timerText; 
@@ -51,20 +54,21 @@ public class AudioObserver : MonoBehaviour
         if (GameManager.Instance == null) return;
 
         GameManager.GameState currentState = GameManager.Instance.currentState;
-
         if (currentState != lastState)
         {
             HandleStateChange(currentState);
             lastState = currentState;
         }
 
-        if (currentState == GameManager.GameState.Playing && timerText != null)
+        if (timerText != null && timerText.text != lastTextValue)
         {
-            if (timerText.text != lastTextValue)
+            string currentText = timerText.text;
+            // Simplified check: if countdown contains changes in seconds, play tick
+            if (currentState == GameManager.GameState.Playing && currentText != lastTextValue)
             {
                 PlayTickSound();
-                lastTextValue = timerText.text;
             }
+            lastTextValue = currentText;
         }
     }
 
@@ -77,23 +81,31 @@ public class AudioObserver : MonoBehaviour
                 break;
 
             case GameManager.GameState.Launching:
-                // 1. Stop intro music
                 if (musicSource.isPlaying) musicSource.Stop();
-                
-                // 2. Play the ignition one-shot (explosion/start)
                 if (launchSound != null) sfxSource.PlayOneShot(launchSound, sfxVolume);
-                
-                // 3. Start the continuous engine loop
                 PlayLoopingAudio(engineLoop);
                 break;
 
             case GameManager.GameState.Falling:
-                // Stop the engine loop when rockets start falling
                 if (musicSource.isPlaying) musicSource.Stop();
                 break;
 
             case GameManager.GameState.End:
                 if (musicSource.isPlaying) musicSource.Stop();
+                
+                // Triggers final audio based on game outcomes (Etapa 5 requirement)
+                if (GameManager.Instance.scoreTeamA > GameManager.Instance.scoreTeamB)
+                {
+                    if (victorySound != null) sfxSource.PlayOneShot(victorySound, sfxVolume);
+                }
+                else if (GameManager.Instance.scoreTeamA < GameManager.Instance.scoreTeamB)
+                {
+                    if (defeatSound != null) sfxSource.PlayOneShot(defeatSound, sfxVolume);
+                }
+                else
+                {
+                    if (tieSound != null) sfxSource.PlayOneShot(tieSound, sfxVolume);
+                }
                 break;
         }
     }

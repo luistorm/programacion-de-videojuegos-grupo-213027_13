@@ -1,16 +1,26 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Manages the core game states, scores, timer, and the overall game loop.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Game Settings")]
     public float gameDuration = 10f;
     private float timer;
 
+    [Header("Team Scores")]
     public int scoreTeamA = 0;
     public int scoreTeamB = 0;
+    
+    [Header("UI References")]
     public TextMeshProUGUI infoText;
+    
+    [Header("Tracking Settings")]
     public int rocketsFinished = 0;
     public Transform rocketCenter;
 
@@ -22,72 +32,131 @@ public class GameManager : MonoBehaviour
         End
     }
 
+    [Header("Current Status")]
     public GameState currentState;
 
-    void Awake()
+    private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    void Start()
+    private void Start()
     {
         timer = gameDuration;
         currentState = GameState.Playing;
-        Debug.Log("Inicia el tiempo");
+        Debug.Log("Game timer started.");
     }
 
-    void Update()
+    private void Update()
     {
-        if (currentState == GameState.Playing)
+        switch (currentState)
         {
-            infoText.text = $"Tiempo: {Mathf.Max(0, Mathf.Ceil(timer))} segundos"; 
-            timer -= Time.deltaTime;
+            case GameState.Playing:
+                HandlePlayingState();
+                break;
 
-            if (timer <= 0)
-            {
-                StartLaunch();
-            }
-        }
-        if (currentState == GameState.Launching)
-        {
-            infoText.text = "Altura: " + Mathf.Ceil(rocketCenter.position.y).ToString();
-            if (rocketsFinished >= 2)
-            {
-                StartFalling();
-            }
-        }
-        if (currentState == GameState.Falling)
-        {
-            if (rocketsFinished >= 2)
-            {
-                EndGame();
-            }
+            case GameState.Launching:
+                HandleLaunchingState();
+                break;
+
+            case GameState.Falling:
+                HandleFallingState();
+                break;
+
+            case GameState.End:
+                HandleEndState();
+                break;
         }
     }
 
-    void EndGame()
+    private void HandlePlayingState()
     {
-        currentState = GameState.End;
-        if (scoreTeamA > scoreTeamB)
-            infoText.text = $"¡Gana el equipo A!"; 
-        else if (scoreTeamA < scoreTeamB)
-            infoText.text = $"¡Gana el equipo B!"; 
-        else 
-            infoText.text = $"¡Empate!"; 
+        infoText.text = $"Time: {Mathf.Max(0, Mathf.Ceil(timer))} seconds"; 
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            StartLaunch();
+        }
     }
 
-    void StartFalling()
+    private void HandleLaunchingState()
+    {
+        if (rocketCenter != null)
+        {
+            infoText.text = "Height: " + Mathf.Ceil(rocketCenter.position.y).ToString();
+        }
+
+        if (rocketsFinished >= 2)
+        {
+            StartFalling();
+        }
+    }
+
+    private void HandleFallingState()
+    {
+        if (rocketsFinished >= 2)
+        {
+            EndGame();
+        }
+    }
+
+    private void HandleEndState()
+    {
+        // Fulfills the Etapa 5 requirement: Restart mechanism using 'R' key
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartGame();
+        }
+    }
+
+    private void StartLaunch()
+    {
+        infoText.text = "Time's up!";
+        currentState = GameState.Launching;
+        rocketsFinished = 0;
+        Debug.Log("Rockets launching!");
+    }
+
+    private void StartFalling()
     {
         currentState = GameState.Falling;
-        Debug.Log("Falling!");
         rocketsFinished = 0;
+        Debug.Log("Rockets falling down!");
     }
 
-    void StartLaunch()
+    private void EndGame()
     {
-        infoText.text = "¡Tiempo!"; 
-        currentState = GameState.Launching;
-        Debug.Log("Despegue!");
-        rocketsFinished = 0;
+        currentState = GameState.End;
+        
+        // Comprehensive win, loss, and tie state check
+        if (scoreTeamA > scoreTeamB)
+        {
+            infoText.text = "Team A Wins!\nPress 'R' to Restart";
+            Debug.Log("Game Over: Team A won.");
+        }
+        else if (scoreTeamA < scoreTeamB)
+        {
+            infoText.text = "Team B Wins!\nPress 'R' to Restart";
+            Debug.Log("Game Over: Team B won.");
+        }
+        else 
+        {
+            infoText.text = "It's a Tie!\nPress 'R' to Restart";
+            Debug.Log("Game Over: Match ended in a tie.");
+        }
+    }
+
+    private void RestartGame()
+    {
+        Debug.Log("Restarting scene...");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
