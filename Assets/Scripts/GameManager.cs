@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public enum GameState
     {
+        Menu,
         Playing,
         Launching,
         Falling,
@@ -32,8 +34,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         timer = gameDuration;
-        currentState = GameState.Playing;
-        Debug.Log("Inicia el tiempo");
+        currentState = GameState.Menu;
     }
 
     void Update()
@@ -74,6 +75,14 @@ public class GameManager : MonoBehaviour
             infoText.text = $"¡Gana el equipo B!"; 
         else 
             infoText.text = $"¡Empate!"; 
+        StartCoroutine(CloseGame());
+    }
+    IEnumerator CloseGame()
+    {
+        yield return new WaitForSeconds(5f);
+        Debug.Log("GAME CLOSED");
+
+        Application.Quit();
     }
 
     void StartFalling()
