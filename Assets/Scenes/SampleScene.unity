@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   gameDuration: 10
   scoreTeamA: 0
-  scoreTeamB: 0
+  scoreTeamB: 1
   infoText: {fileID: 608779840}
   rocketsFinished: 0
   rocketCenter: {fileID: 1331783638}
@@ -521,6 +521,9 @@ MonoBehaviour:
   engineLoop: {fileID: 8300000, guid: 2a97e45dbf251453cbaa1953c068088c, type: 3}
   countdownBeep: {fileID: 8300000, guid: b482f67ad505a4705903f3d1d645dd29, type: 3}
   launchSound: {fileID: 8300000, guid: 0ecb94edb22fd4e159395428117f1ed1, type: 3}
+  victorySound: {fileID: 0}
+  defeatSound: {fileID: 0}
+  tieSound: {fileID: 0}
   timerText: {fileID: 608779840}
 --- !u!82 &356751815
 AudioSource:
